@@ -245,6 +245,7 @@ a {
   }
   .container {
     margin-left: -10px;
+    margin-bottom: 10rem;
   }
   .text-mobile {
     display: block;
@@ -315,7 +316,7 @@ a {
     font-size: 10rem;
     color: white;
     text-align: center;
-    width: 100%;
+    width: 90%;
     border: none;
     cursor: pointer;
     font-size: 0.8rem;
@@ -330,7 +331,7 @@ a {
   .btn-green {
     margin: -1rem 0 2rem 0;
     background-color: #218839;
-    width: 90%;
+    width: 80%;
   }
   .wrapper {
     width: 45vh;
