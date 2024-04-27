@@ -80,22 +80,25 @@ document.getElementById("universitasPeserta").textContent = data.universitas;
 
 document.getElementById("JurusanPeserta").textContent = data.jurusan;
 
-document.getElementById("saveButton").addEventListener("click", function () {
-  console.log("aku diklik");
-  captureAndSaveScreen();
-});
+document.getElementById("nomorMobile").textContent = data.nomorPeserta;
+
+document.getElementById("namaMobile").textContent = data.nama;
+
+document.getElementById("tanggalLahirMobile").textContent =
+  data.hari + " - " + data.bulan + " - " + data.tahun;
+
+document.getElementById("universitasMobile").textContent = data.universitas;
+
+document.getElementById("JurusanMobile").textContent = data.jurusan;
 
 function captureAndSaveScreen() {
   html2canvas(document.body).then(function (canvas) {
-    // Konversi elemen canvas menjadi URL gambar
     var dataURL = canvas.toDataURL("image/png");
 
-    // Buat link untuk mengunduh gambar secara langsung
     var link = document.createElement("a");
     link.href = dataURL;
     link.download = "screenshot.png";
 
-    // Sisipkan link ke dalam dokumen, klik, lalu hapus
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
