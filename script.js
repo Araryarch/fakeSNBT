@@ -13,12 +13,34 @@ function generateSevenRandomNumbers() {
   return Math.floor(Math.random() * 10000000); // Menghasilkan angka acak antara 0 dan 9999999
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (event) {
+    const inputs = form.querySelectorAll(
+      'input[type="text"], input[type="number"]'
+    );
+    let valid = true;
+    inputs.forEach((input) => {
+      if (input.value.trim() === "") {
+        alert("Form tidak boleh kosong atau diisi dengan spasi saja!");
+        valid = false;
+      }
+    });
+    if (!valid) {
+      event.preventDefault();
+    } else {
+      window.location.href = "accepted.html";
+    }
+  });
+});
 function sendData(event) {
   event.preventDefault();
   const nomorPeserta = generateRandomNumber();
   const nama = document.getElementById("nama").value.toUpperCase();
-  const hari = document.getElementById("hari").value;
-  const bulan = document.getElementById("bulan").value;
+  let hari = document.getElementById("hari").value;
+  hari = hari < 10 ? "0" + hari : hari;
+  let bulan = document.getElementById("bulan").value;
+  bulan = bulan < 10 ? "0" + bulan : bulan;
   const tahun = document.getElementById("tahun").value;
   const universitas =
     generateThreeRandomNumbers() +
@@ -43,7 +65,6 @@ function sendData(event) {
       jurusan,
     })
   );
-  window.location.href = "accepted.html";
 }
 
 const data = JSON.parse(localStorage.getItem("formData"));

@@ -128,26 +128,6 @@
         </button>
       </form>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form");
-        form.addEventListener("submit", function (event) {
-          const inputs = form.querySelectorAll(
-            'input[type="text"], input[type="number"]'
-          );
-          let valid = true;
-          inputs.forEach((input) => {
-            if (input.value.trim() === "") {
-              alert("Form tidak boleh kosong atau diisi dengan spasi saja!");
-              valid = false;
-            }
-          });
-          if (!valid) {
-            event.preventDefault();
-          }
-        });
-      });
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
