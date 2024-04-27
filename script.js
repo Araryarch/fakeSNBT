@@ -104,21 +104,3 @@ function captureAndSaveScreen() {
     document.body.removeChild(link);
   });
 }
-
-function captureAndSaveScreen() {
-  html2canvas(document.body).then(function (canvas) {
-    var dataURL = canvas.toDataURL("image/png");
-
-    if (navigator.userAgent.match(/iPhone|iPod|iPad|Android/i)) {
-      window.open(dataURL);
-    } else {
-      var link = document.createElement("a");
-      link.href = dataURL;
-      link.download = "fakesnbt.png";
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  });
-}

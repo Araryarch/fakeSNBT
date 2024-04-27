@@ -229,6 +229,7 @@ a {
 
 @media (max-width: 768px) {
   body {
+    max-width: 100%;
     overflow-x: hidden;
     width: 100vh;
     display: flex;
