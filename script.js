@@ -15,32 +15,47 @@ function generateSevenRandomNumbers() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
-  form.addEventListener("submit", function (event) {
-    const inputs = form.querySelectorAll(
-      'input[type="text"], input[type="number"]'
-    );
-    let valid = true;
-    inputs.forEach((input) => {
-      if (input.value.trim() === "") {
-        alert("Form tidak boleh kosong atau diisi dengan spasi saja!");
-        valid = false;
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      const inputs = form.querySelectorAll(
+        'input[type="text"], input[type="number"]'
+      );
+      let valid = true;
+      inputs.forEach((input) => {
+        if (input.value.trim() === "") {
+          alert("ngisi form yang bener anjing!");
+          valid = false;
+        }
+      });
+      if (!valid) {
+        event.preventDefault();
+      } else {
+        window.location.href = "accepted.html";
       }
     });
-    if (!valid) {
-      event.preventDefault();
-    } else {
-      window.location.href = "accepted.html";
-    }
-  });
+  }
 });
+
+function checkNumber(number) {
+  if (typeof number === "number") {
+    if (number.toString().startsWith("0")) {
+      return number;
+    } else {
+      return number < 10 ? "0" + number : number;
+    }
+  } else {
+    return number;
+  }
+}
+
 function sendData(event) {
   event.preventDefault();
   const nomorPeserta = generateRandomNumber();
   const nama = document.getElementById("nama").value.toUpperCase();
   let hari = document.getElementById("hari").value;
-  hari = hari < 10 ? "0" + hari : hari;
+  hari = checkNumber(hari);
   let bulan = document.getElementById("bulan").value;
-  bulan = bulan < 10 ? "0" + bulan : bulan;
+  bulan = checkNumber(bulan);
   const tahun = document.getElementById("tahun").value;
   const universitas =
     generateThreeRandomNumbers() +
